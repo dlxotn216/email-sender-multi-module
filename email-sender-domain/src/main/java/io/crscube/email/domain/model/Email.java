@@ -58,6 +58,7 @@ public class Email {
         }
 
         this.status = EmailStatus.FAIL;
+        this.requestedDateTime = LocalDateTime.now();
     }
 
     private void addAdditionalInformation(String key, String value) {

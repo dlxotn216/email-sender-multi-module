@@ -8,6 +8,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/email-sender-mongodb/pom.xml" />
         <option value="$PROJECT_DIR$/email-sender-utils/pom.xml" />
       </set>
     </option>

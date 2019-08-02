@@ -8,7 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="email-sender-api" />
         <module name="email-sender-application" />
+        <module name="email-sender-daemon" />
         <module name="email-sender-domain" />
+        <module name="email-sender-embedded-mongodb" />
         <module name="emailsenderapi" />
         <module name="emailsenderbatch" />
       </profile>
@@ -22,7 +24,10 @@
     <bytecodeTargetLevel>
       <module name="email-sender-api" target="1.8" />
       <module name="email-sender-application" target="1.8" />
+      <module name="email-sender-daemon" target="1.8" />
       <module name="email-sender-domain" target="1.8" />
+      <module name="email-sender-embedded-mongodb" target="1.8" />
+      <module name="email-sender-mongodb" target="1.8" />
       <module name="email-sender-utils" target="1.8" />
       <module name="emailsenderapi" target="1.8" />
       <module name="emailsenderbatch" target="1.8" />

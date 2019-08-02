@@ -12,7 +12,8 @@
     <modules>
         <module>email-sender-application</module>
         <module>email-sender-domain</module>
-        <module>email-sender-batch</module>
+        <module>email-sender-daemon</module>
+        <module>email-sender-embedded-mongodb</module>
     </modules>
 
     <parent>
