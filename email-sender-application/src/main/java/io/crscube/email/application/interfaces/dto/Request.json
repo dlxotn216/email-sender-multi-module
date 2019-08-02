@@ -1,0 +1,14 @@
+{
+  "mailType": "CTMS_USER_REGISTRATION",
+  "titleParameters": ["Beta"],
+  "recipients": [
+    "taesu@crscube.co.kr"
+  ],
+  "model": {
+    "passwordURL": "www.cubectms.com",
+    "sponsorName": "CRSCUBE",
+    "username": "Lee Tae Su",
+    "userId": "taesu",
+    "systemURL": "www.cubectms.com"
+  }
+}

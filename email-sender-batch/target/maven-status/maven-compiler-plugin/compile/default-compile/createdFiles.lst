@@ -1,0 +1,12 @@
+io/crscube/email/batch/service/SearchEarliestEmailService.class
+io/crscube/email/batch/infra/BackgroundSendMailTask.class
+io/crscube/email/batch/infra/impl/S3ClientSendMailTask.class
+io/crscube/email/batch/config/AppConstantsConfigurationProperties.class
+io/crscube/email/batch/infra/EmailRepository.class
+io/crscube/email/batch/task/ScheduledBatchMailSendTask.class
+io/crscube/email/batch/infra/EmailSender.class
+io/crscube/email/batch/config/ApplicationConfig.class
+io/crscube/email/batch/config/EmailSendBatchJobConfig.class
+io/crscube/email/batch/infra/impl/AwsAsyncEmailSender.class
+io/crscube/email/batch/config/AsyncConfig.class
+io/crscube/email/batch/EmailSenderBatchApplication.class
