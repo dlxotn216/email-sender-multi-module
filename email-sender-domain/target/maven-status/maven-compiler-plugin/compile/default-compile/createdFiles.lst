@@ -1,7 +1,7 @@
-io\crscube\email\domain\model\Attachment.class
-io\crscube\email\domain\model\Email$EmailBuilder.class
-io\crscube\email\domain\model\Email.class
-io\crscube\email\domain\repository\EmailRepository.class
-io\crscube\email\domain\model\MailType.class
-io\crscube\email\domain\model\EmailStatus.class
-io\crscube\email\domain\model\Logo.class
+io/crscube/email/domain/model/Logo.class
+io/crscube/email/domain/model/Email$EmailBuilder.class
+io/crscube/email/domain/model/Attachment.class
+io/crscube/email/domain/model/Email.class
+io/crscube/email/domain/model/EmailStatus.class
+io/crscube/email/domain/repository/EmailRepository.class
+io/crscube/email/domain/model/MailType.class

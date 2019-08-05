@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @EnableMongoRepositories(basePackages = "io.crscube.email.domain")
 @SpringBootApplication(scanBasePackages = {"io.crscube.email.daemon", "io.crscube.email.domain"})
-public class EmailSenderBatchApplication {
+public class EmailSenderDaemonApplication {
     public static void main(String[] args) {
-        SpringApplication.run(EmailSenderBatchApplication.class, args);
+        SpringApplication.run(EmailSenderDaemonApplication.class, args);
     }
 }
