@@ -8,8 +8,13 @@ spring:
       port: 50060
   profiles:
     active: local
+  main:
+    web-application-type: none
 
 app:
   constants:
     awsMailContentCharset: UTF-8
     awsMessageIdKeyName: awsMessageId
+    tempFileDir: /Users/itaesu/Desktop/Work/deploy/temp
+
+  maxProcessCapacity: 10

@@ -1,5 +1,6 @@
 package io.crscube.email.application.interfaces.dto;
 
+import io.crscube.email.domain.model.AttachmentType;
 import io.crscube.email.domain.model.Email;
 import io.crscube.email.domain.model.MailType;
 import lombok.AllArgsConstructor;
@@ -65,8 +66,9 @@ public final class RequestToSendMailDto {
 
     @Data @NoArgsConstructor @AllArgsConstructor
     public static class AttachmentMeta {
+        private AttachmentType attachmentType;
         private String attachmentName;
-        private String downloadURL;
+        private String attachmentId;
     }
 
     @Data @AllArgsConstructor @ToString @NoArgsConstructor

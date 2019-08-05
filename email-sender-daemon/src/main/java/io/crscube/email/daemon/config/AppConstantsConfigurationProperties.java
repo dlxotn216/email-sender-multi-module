@@ -14,4 +14,5 @@ import org.springframework.stereotype.Component;
 public class AppConstantsConfigurationProperties {
     private String awsMessageIdKeyName;
     private String awsMailContentCharset;
+    private String tempFileDir;
 }

@@ -7,6 +7,13 @@ import lombok.Value;
  */
 @Value
 public class Attachment {
+    private AttachmentType attachmentType;
     private String attachmentName;
-    private String downloadURL;
+    private String attachmentId;
+
+    public String getUniqueName() {
+        return attachmentType == AttachmentType.S3
+                ? this.attachmentId
+                : this.attachmentName;
+    }
 }

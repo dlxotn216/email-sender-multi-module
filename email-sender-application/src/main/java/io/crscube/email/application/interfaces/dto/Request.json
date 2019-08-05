@@ -1,6 +1,8 @@
 {
   "mailType": "CTMS_USER_REGISTRATION",
-  "titleParameters": ["Beta"],
+  "titleParameters": [
+    "Beta"
+  ],
   "recipients": [
     "taesu@crscube.co.kr"
   ],
@@ -10,5 +12,17 @@
     "username": "Lee Tae Su",
     "userId": "taesu",
     "systemURL": "www.cubectms.com"
-  }
+  },
+  "attachmentMetas": [
+    {
+      "attachmentType": "S3",
+      "attachmentName": "첨부.pdf",
+      "attachmentId": "demo-mail-attach/2019-08-01T17:08:05.524-601722ab-a267-48c6-926e-e20294f9dd26.pdf"
+    },
+    {
+      "attachmentType": "S3",
+      "attachmentName": "test22.xlsx",
+      "attachmentId": "demo-mail-attach/2019-08-01T17:18:14.289-e9841ce5-8e4b-42e7-975b-99cc6eb75c23.xlsx"
+    }
+  ]
 }

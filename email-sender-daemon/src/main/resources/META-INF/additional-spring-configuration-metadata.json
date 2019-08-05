@@ -14,6 +14,16 @@
       "name": "app.constants.awsMailContentCharset",
       "type": "java.lang.String",
       "description": "Description for app.constants.awsMailContentCharset."
+    },
+    {
+      "name": "app.constants.tempFileDir",
+      "type": "java.lang.String",
+      "description": "Description for app.constants.tempFileDir."
+    },
+    {
+      "name": "app.maxProcessCapacity",
+      "type": "java.lang.Integer",
+      "description": "Description for app.maxProcessCapacity."
     }
   ]
 }

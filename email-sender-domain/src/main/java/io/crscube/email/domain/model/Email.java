@@ -71,7 +71,7 @@ public class Email {
     }
 
     public String getLogoPath() {
-        return this.logo.getDownloadURL();
+        return this.logo.getAttachmentId();
     }
 
     public String getLogoName() {

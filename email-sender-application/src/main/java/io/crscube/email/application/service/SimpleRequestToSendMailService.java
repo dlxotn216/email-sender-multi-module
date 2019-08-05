@@ -50,7 +50,9 @@ public class SimpleRequestToSendMailService {
                     .logo(new Logo(getEmailLogoName(mailType), getEmailLogoPath(mailType)))
                     .recipients(request.getRecipients())
                     .attachments(request.getAttachmentMetas().stream()
-                                        .map(meta -> new Attachment(meta.getAttachmentName(), meta.getDownloadURL()))
+                                        .map(meta -> new Attachment(meta.getAttachmentType(),
+                                                                    meta.getAttachmentName(),
+                                                                    meta.getAttachmentId()))
                                         .collect(toList()))
                     .build();
     }

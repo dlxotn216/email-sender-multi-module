@@ -8,5 +8,5 @@ import lombok.Value;
 @Value
 public class Logo {
     private String logoName;
-    private String downloadURL;
+    private String attachmentId;
 }

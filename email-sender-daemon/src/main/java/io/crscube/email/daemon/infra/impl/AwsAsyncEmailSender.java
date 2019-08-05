@@ -1,8 +1,9 @@
 package io.crscube.email.daemon.infra.impl;
 
 import io.crscube.email.daemon.config.AppConstantsConfigurationProperties;
-import io.crscube.email.domain.model.Email;
 import io.crscube.email.daemon.infra.EmailSender;
+import io.crscube.email.daemon.infra.ResourceFileManager;
+import io.crscube.email.domain.model.Email;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
@@ -15,6 +16,7 @@ import software.amazon.awssdk.core.SdkBytes;
 import software.amazon.awssdk.services.ses.SesAsyncClient;
 import software.amazon.awssdk.services.ses.model.RawMessage;
 import software.amazon.awssdk.services.ses.model.SendRawEmailRequest;
+import software.amazon.awssdk.services.ses.model.SendRawEmailResponse;
 
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -22,12 +24,14 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 
@@ -37,26 +41,28 @@ import java.util.stream.Collectors;
 @Slf4j
 @Component("AwsAsyncEmailSender") @RequiredArgsConstructor
 public class AwsAsyncEmailSender implements EmailSender {
-
     private final AppConstantsConfigurationProperties properties;
     private final SesAsyncClient sesAsyncClient;
+    private final ResourceFileManager resourceFileManager;
 
     @Async
     @Override
-    public CompletableFuture<Map<String, String>> send(Email email) {
-        try {
-            final SendRawEmailRequest build = getSendEmailRequest(email);
-
-            return this.sesAsyncClient.sendRawEmail(build)
-                                      .thenApply(sendEmailResult -> {
-                                          final Map<String, String> successInfo = new HashMap<>();
-                                          successInfo.put(this.properties.getAwsMessageIdKeyName(),
-                                                          sendEmailResult.messageId());
-                                          return successInfo;
-                                      });
-        } catch (Exception ex) {
-            throw new IllegalArgumentException(ex.getMessage(), ex);
-        }
+    public CompletableFuture<Email> send(Email email, Executor sendEmailScheduler) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                final SendRawEmailRequest build = getSendEmailRequest(email);
+                final SendRawEmailResponse sendEmailResult = this.sesAsyncClient.sendRawEmail(build).get();
+                final Map<String, String> successInfo = new HashMap<>();
+                successInfo.put(this.properties.getAwsMessageIdKeyName(), sendEmailResult.messageId());
+                email.processSuccess(successInfo);
+            } catch (Exception e) {
+                email.processFail(e);
+                log.error("Send mail error {}", e);
+            } finally {
+                this.resourceFileManager.remove(email.getId());
+            }
+            return email;
+        }, sendEmailScheduler);
     }
 
     private SendRawEmailRequest getSendEmailRequest(Email email) {
@@ -97,6 +103,15 @@ public class AwsAsyncEmailSender implements EmailSender {
                 }
             }).filter(Objects::nonNull).collect(Collectors.toList()).toArray(new InternetAddress[]{}));
             message.addInline(email.getLogoName(), getLogoFile(email));
+
+            email.getAttachments().forEach(attachment -> {
+                final File file = this.resourceFileManager.download(email.getId(), attachment);
+                try {
+                    message.addAttachment(attachment.getAttachmentName(), file);
+                } catch (MessagingException e) {
+                    log.error("Email attach 첨부 중 에러", e.getMessage(), e);
+                }
+            });
         };
     }
 
@@ -104,7 +119,7 @@ public class AwsAsyncEmailSender implements EmailSender {
         try {
             return new FileSystemResource(new ClassPathResource(email.getLogoPath()).getFile());
         } catch (IOException e) {
-            throw new IllegalArgumentException("Logo file not exists "+ email.getLogoPath());
+            throw new IllegalArgumentException("Logo file not exists " + email.getLogoPath());
         }
     }
 
