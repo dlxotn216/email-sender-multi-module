@@ -50,7 +50,7 @@
         <td>
             <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top :15px; margin-bottom : 25px;">
                 <tr>
-                    <td colspan="2" style="padding:6px 0; color:#363636; font-size:14px; font-weight:bold; padding-left:24px; font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;">User Information</td>
+                    <td colspan="2" style="padding:6px 0; color:#363636; font-size:14px; font-weight:bold; padding-left:24px; font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;">User Information(사용자 정보 思用者)</td>
                 </tr>
                 <tr>
                     <td bgcolor="#f5f5f5" style="width:35%; padding:6px 0; color:#363636; font-size:14px; padding-left:24px; font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;">Site URL</td>

@@ -1,0 +1,11 @@
+io\crscube\email\daemon\EmailSenderBatchApplication.class
+io\crscube\email\daemon\infra\BackgroundSendMailTask.class
+io\crscube\email\daemon\infra\EmailSender.class
+META-INF\spring-configuration-metadata.json
+io\crscube\email\daemon\infra\impl\AwsAsyncEmailSender.class
+io\crscube\email\daemon\service\SearchEarliestEmailService.class
+io\crscube\email\daemon\config\ApplicationConfig.class
+io\crscube\email\daemon\task\ScheduledBatchMailSendTask.class
+io\crscube\email\daemon\config\AppConstantsConfigurationProperties.class
+io\crscube\email\daemon\config\AsyncConfig.class
+io\crscube\email\daemon\infra\impl\S3ClientSendMailTask.class
